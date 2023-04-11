@@ -5,6 +5,10 @@ const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
 
+
+
+// kiem tra cac url se kiem tra cac file tinh o thu muc public nay
+app.use(express.static(__dirname + '/public'));
 // HTTP logger
 app.use(morgan('combined'));
 
