@@ -1,11 +1,20 @@
 const path = require('path');
+// khai bao express
 const express = require('express');
+// khai bao morgan
 const morgan = require('morgan');
+// khai bao hbs
 const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
 
+// khai bao route
+const route = require('./routes');
 
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 
 // kiem tra cac url se kiem tra cac file tinh o thu muc public nay
 app.use(express.static(__dirname + '/public'));
@@ -19,12 +28,8 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
-app.get('/', (req, res) => {
-    res.render('home');
-})
+// su dung route o file src/routes/index duoc import vao
+route(app);
 
-app.get('/news', (req, res) => {
-    res.render('news');
-})
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
