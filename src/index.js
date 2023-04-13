@@ -6,7 +6,13 @@ const morgan = require('morgan');
 // khai bao hbs
 const { engine } = require("express-handlebars");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || '3000';
+
+// khai bao duong dan cua connect
+const db = require('./config/db');
+
+// Connect to DB
+db.connect();
 
 // khai bao route
 const route = require('./routes');
