@@ -2,10 +2,11 @@
     <div class="row">
 
         {{#each courses}}
-        <div class="col-sm-6 col-lg-4">
+        <div style="padding-top: 20px" class="col-sm-6 col-lg-4">
             <div class="card card-course-item">
                 <a href="/courses/{{this.slug}}">
-                    <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                    <img style="width: 150px; padding-top=20px" class="card-img-top" src="{{this.image}}"
+                        alt="{{this.name}}">
                 </a>
                 <div class="card-body">
                     <a href="/courses/{{this.slug}}">
