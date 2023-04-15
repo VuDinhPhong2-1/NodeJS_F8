@@ -3,11 +3,12 @@ const slug = require('mongoose-slug-generator');
 const Schema = mongoose.Schema;
 mongoose.plugin(slug);
 const Coure = new Schema({
-    name: { type: String, maxLength: 255 },
-    description: { type: String, maxLength: 255 },
+    name: { type: String, required: true },
+    description: { type: String },
     image: { type: String },
-    slug: { type: String, slug: 'name', unique: true },
-    v: { type: String, maxLength: 255 },
+    videoId: { type: String, required: true },
+    level: { type: String },
+    slug: { type: String, slug: 'name' },
 }, {
     timestamps: true,
 });

@@ -11,6 +11,10 @@ const port = process.env.PORT || '3000';
 // khai bao duong dan cua connect
 const db = require('./config/db');
 
+//override using a query value
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 // Connect to DB
 db.connect();
 
@@ -29,7 +33,10 @@ app.use(morgan('combined'));
 
 // Template engine
 app.engine('hbs', engine({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        sum: (a, b) => a + b,
+    }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
