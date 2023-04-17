@@ -41,10 +41,25 @@ class CoursesController {
             .catch(next);
 
     }
+    // [DELETE] /courses/:id xóa mềm dữ liệu vào database
     destroy(req, res, next) {
+        Course.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    // [DELETE] /courses/:id/force xóa cứng dữ liệu vào database
+    forceDestroy(req, res, next) {
         Course.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch(next);
     }
+    // [DELETE] /courses/:id/restore khôi phục dữ liệu vào database
+    restore(req, res, next) {
+        Course.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+
 }
 module.exports = new CoursesController;
