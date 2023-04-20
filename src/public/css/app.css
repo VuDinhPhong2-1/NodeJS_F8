@@ -6,3 +6,6 @@ h1 {
   height: 28px;
   border-radius: 50px;
   margin-right: 4px; }
+
+.checkbox-select-all-options {
+  width: 170px; }

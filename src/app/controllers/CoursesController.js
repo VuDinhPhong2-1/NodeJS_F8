@@ -60,6 +60,8 @@ class CoursesController {
             .catch(next);
     }
 
-
+    handelFormActions(req, res, next) {
+        res.json(req.body);
+    }
 }
 module.exports = new CoursesController;
